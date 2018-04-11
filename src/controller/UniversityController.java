@@ -44,7 +44,7 @@ public class UniversityController{
     
   }
   /**
-   * Allow users to get a list of saved universities.
+   * Allow users to get a list of all saved universities in database.
    */
   public ArrayList<University> getSavedUniversities() {
     
@@ -79,9 +79,9 @@ public class UniversityController{
    * @param type the type of user it is
    * 
    */
-  public void addUser(String firstName, String lastName, String username, String password,char type){
-    dblib.user_addUser(username, firstName, lastName, password, type);
-  }
+ // public void addUser(String firstName, String lastName, String username, String password,char type){
+  //  dblib.user_addUser(username, firstName, lastName, password, type);
+  //}
   
   /**
    * make changes to a university within the database
@@ -101,9 +101,9 @@ public class UniversityController{
    * @throws IllegalArgumentException if the preconditions are not met
    * 
    */
-  public void viewUniversityDetails(University u, ArrayList<String> m)
+  public boolean viewUniversityDetails(University u, ArrayList<String> m)
   {
-      
+    if(u instanceof University) {
     System.out.println("University Name: " + u.getUniversityName());
     System.out.println("University State: " + u.getUniversityState());
     System.out.println("University Location Type: " + u.getLocationType());
@@ -121,6 +121,12 @@ public class UniversityController{
     System.out.println("University SocialScale: " + u.getSocialScale());
     System.out.println("University QualityOfLife: " + u.getQualityOfLife());
     System.out.println("University Emphases: " + m);
+    return true;
+    }
+    else {
+	return false;
+    }
+    
     
   }
  /**

@@ -75,7 +75,7 @@ public class StudentInteraction
    * @param socialScale the school's social rating
    * @param qualityOfLifeScale the school's quality of life for students
    */
-  public void search(String universityName, String state, String location, String control, String numberOfStudents, String female, String satVerbal,
+  public boolean search(String universityName, String state, String location, String control, String numberOfStudents, String female, String satVerbal,
                      String satMath, String expenses, String financialAid, String numberOfApplicants, String admitted, String enrolled,
                      String academicScale, String socialScale, String qualityOfLifeScale)
   {
@@ -114,13 +114,28 @@ public class StudentInteraction
 //    System.out.println("Enter the Quality of Life (1-5)");
 //    int qualityOfLifeScale = Integer.parseInt(sc.nextLine());
     
-    SearchController searchController = new SearchController();;
+    SearchController searchController = new SearchController();
+    if(universityName == null|| state == null|| location == null|| control == null|| numberOfStudents == null|| female == null|| satVerbal == null||
+            satMath == null|| expenses == null|| financialAid == null|| numberOfApplicants == null|| admitted == null|| enrolled == null||
+            academicScale == null|| socialScale == null|| qualityOfLifeScale == null) {
+    	return false;
+    }
     results = searchController.search(universityName, state, location, control, numberOfStudents, female, satVerbal,
                                       satMath, expenses, financialAid, numberOfApplicants, admitted, enrolled,
                                       academicScale, socialScale, qualityOfLifeScale);
-    for(String s : results)
-    {
-      System.out.println(s);
+    
+    if(results == null) {
+    	
+    	return false;
+    }
+    else {
+    	for(String s : results)
+        {
+        
+          System.out.println(s);
+        }
+    	
+    	return true;
     }
   }
   

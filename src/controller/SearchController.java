@@ -57,8 +57,7 @@ public class SearchController{
    * @param academicScale the school's academic rating
    * @param socialScale the school's social rating
    * @param qualityOfLifeScale the school's quality of life for students
-   * 
-   * @returns an ArrayList of universities that fits the search criteria
+ * @returns an ArrayList of universities that fits the search criteria
    */
   public ArrayList<String> search(String universityName, String state, String location, String control, String numberOfStudents, String female, String satVerbal,
                                   String satMath, String expenses, String financialAid, String numberOfApplicants, String admitted, String enrolled,
@@ -233,7 +232,7 @@ public class SearchController{
         } 
       }
     //}
-    
+    System.out.println("22");
     return schoolInfo;
   }
 }

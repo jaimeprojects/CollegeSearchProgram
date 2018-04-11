@@ -228,6 +228,7 @@ public class DatabaseController{
   public ArrayList<String> getEmphasis(String u) {
 	  String[][] emphasis = dblib.university_getNamesWithEmphases();
 	  ArrayList<String> majors = new ArrayList<String>();
+	  
 	  for(int i = 0; i < emphasis.length; i++) {
 		  if(emphasis[i][0].equals(u)) {
 			  for(int x=0; x< emphasis[i].length; x++) {

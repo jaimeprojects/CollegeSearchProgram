@@ -6,6 +6,8 @@ import interaction.AdminInteraction;
 
 import static org.junit.Assert.*;
 
+import java.util.ArrayList;
+
 import org.junit.Before;
 import org.junit.Test;
 
@@ -61,45 +63,30 @@ public class UniversityControllerTest {
 
 	@Test
 	public void testGetSavedUniversities() {
-		fail("Not yet implemented");
-		//invalid user, null, valid user
-		uc.getSavedUniversities();
+		
+		ArrayList<University> schools = uc.getSavedUniversities();
+		assertTrue("Expected value is", (schools instanceof ArrayList<?>));
 	}
 
-	@Test
-	public void testAddUser() {
-		String firstName = "clark";
-		String lastName = "kent";
-		String usrName = "superman";
-		String password = "password";
-		char type = 'a';
-		
-		AdminInteraction noreen = new AdminInteraction("nadmin", "admin");
-	    
-	    //noreen.login("noreen", "admin");
-	    uc.addUser(firstName, lastName, usrName, password, type);
-	    
-	    Account temp = noreen.findStudent("superman");
-	    
-		//assertTrue("Expected first name is " + firstName, 5 == (2+3));
-		assertEquals("Expected first name is " + firstName, firstName, temp.getFirstName());
-		//assertTrue("Expected Last  name is " + lastName, lastName == temp.getLastName());
-		//assertTrue("Expected username is " + usrName, usrName == temp.getUsername());
-		//assertTrue("Expected password is " + password, password == temp.getPassword());
-		//assertTrue("Expected user type is " + type, type == temp.getType());
-		
-		
-	}
 
 	@Test
 	public void testViewUniversityDetails() {
-		fail("Not yet implemented");
+		University validSchool = uc.getUniversity("BROWN");
+		University invalidSchool = uc.getUniversity("BROW");
+		ArrayList<String> validEmphasis = validSchool.getEmphases();
+		//ArrayList<String> invalidEmphasis = invalidSchool.getEmphases();
+		//viewUniversityDetails(University u, ArrayList<String> m)
+		assertTrue("Valid University", uc.viewUniversityDetails(validSchool, validEmphasis));
+		assertTrue("Invalid University", invalidSchool == null);
 		//existing and not and null
 	}
 
 	@Test
 	public void testGetUniversity() {
-		fail("Not yet implemented");
+		University u = uc.getUniversity("BROWN");
+		University invalidSchool = uc.getUniversity("BROW");
+		assertTrue("valid", u instanceof University);
+		assertTrue("Invalid University", invalidSchool == null);
 		//existing , not, null possibly 
 	}
 
